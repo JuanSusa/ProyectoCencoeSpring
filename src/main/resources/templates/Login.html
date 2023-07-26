@@ -4,41 +4,43 @@
     <head>
         <title>Login</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-         <div th:if = "${usuario != null and !usuario.empty}">
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Contraseña</th>
-                        <th>Direccion</th>
-                        <th>Email</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="usuario: ${usuario}">
-                        <td th:text= "${usuario.nomUsuario}">Mostrar Nombre</td>
-                        <td th:text= "${usuario.apellidoUsuario}">Mostrar Apellido</td>
-                        <td th:text= "${usuario.direUsuario}">Mostrar Direccion</td>
-                        <td th:text= "${usuario.passUsuario}">Mostrar Contraseña</td>                    
-                        <td th:text= "${usuario.emailUsuario}">Mostrar Email</td>                    
-                        <td> <a th:href= "@{/editar/} + ${usuario.idUsuario}" th:text="Editar"/></td>                    
-                        <td> <a th:href= "@{/eliminar (idUser=${usuario.idUsuario})} " th:text="Eliminar"/></td>                    
-                    </tr>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                </head>
+                <body>
+                    <a th:href ="@{/registro}">Crear Persona</a>
+                    <br/>
+                    <div th:if = "${usuario != null and !usuario.empty}">
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Contraseña</th>
+                                    <th>Direccion</th>
+                                    <th>Email</th>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="usuario: ${usuario}">
+                                    <td th:text= "${usuario.nomUsuario}">Mostrar Nombre</td>
+                                    <td th:text= "${usuario.apellidoUsuario}">Mostrar Apellido</td>
+                                    <td th:text= "${usuario.direUsuario}">Mostrar Direccion</td>
+                                    <td th:text= "${usuario.passUsuario}">Mostrar Contraseña</td>                    
+                                    <td th:text= "${usuario.emailUsuario}">Mostrar Email</td>                    
+                                    <td> <a th:href= "@{/editar/} + ${usuario.idUsuario}" th:text="Editar"/></td>                    
+                                    <td> <a th:href= "@{/eliminar (idUser=${usuario.idUsuario})} " th:text="Eliminar"/></td>                    
+                                </tr>
 
-                </tbody>
-            </table>
-        </div>
-        <div th:if="${usuario ==null or usuario.empty}">
-            La lista esta vacia            
-        </div>
-                
-        
+                            </tbody>
+                        </table>
+                    </div>
+                    <div th:if="${usuario ==null or usuario.empty}">
+                        La lista esta vacia            
+                    </div>
 
-    </body>
-</html>
+
+
+                </body>
+                </html>
