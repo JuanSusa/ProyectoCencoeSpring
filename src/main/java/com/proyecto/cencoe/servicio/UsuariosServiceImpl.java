@@ -14,9 +14,8 @@ public class UsuariosServiceImpl implements UsuariosService {
     @Autowired //Anotacion para inyectar o traer la informacion del obj dao
     public UsuarioDao usuariosDao;
     
-    
-    @Override
-    //anotacion para generar una transaccion en la clase dao
+    //anotacion para indicar que se esta sobrescribiendo el metodo heredado
+    @Override    
     //readOnly, parametro para solo lectura de la bd
     @Transactional(readOnly = true)
     public List<Usuarios> listarUsuarios(){
@@ -25,7 +24,7 @@ public class UsuariosServiceImpl implements UsuariosService {
 
     @Override
     @Transactional//anotacion para generar una transaccion en la clase dao
-    public void agregar(Usuarios usuarios) {
+    public void guardar(Usuarios usuarios) {
         usuariosDao.save(usuarios);
     }
 
@@ -33,6 +32,13 @@ public class UsuariosServiceImpl implements UsuariosService {
     @Transactional
     public void eliminar(Usuarios usuarios) {
         usuariosDao.delete(usuarios);
+    }
+
+    @Override
+    @Transactional(readOnly = true) 
+    public Usuarios buscarUsuario(Usuarios usuarios) {
+        //or.Else, si no encuentra coincidencia con el id devuleve null
+        return usuariosDao.findById(usuarios.getIdUsuario()).orElse(null);
     }
     
     

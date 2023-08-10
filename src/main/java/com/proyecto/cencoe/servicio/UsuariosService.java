@@ -7,8 +7,10 @@ public interface UsuariosService {
     
     public List<Usuarios> listarUsuarios();
     
-    public void agregar (Usuarios usuarios);
+    public void guardar (Usuarios usuarios);
     
     public void eliminar (Usuarios usuarios);
+    
+    public Usuarios buscarUsuario(Usuarios usuarios);
     
 }
